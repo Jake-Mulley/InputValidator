@@ -16,9 +16,9 @@ public class TestValidator {
         // validator instance to test
         Validator testValidator = new Validator("", "");
         testValidator.setEmail("contains@inString");
-        assertEquals(true, testValidator.emailFormChecker());
+        assertEquals(true, testValidator.emailFormChecker("contains@inString"));
         testValidator.setEmail("containsNoAt");
-        assertEquals(false, testValidator.emailFormChecker());
+        assertEquals(false, testValidator.emailFormChecker("containsNoAt"));
     }
 }
 
