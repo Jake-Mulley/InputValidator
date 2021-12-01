@@ -12,12 +12,14 @@ public class Validator {
 
     public boolean emailFormChecker(String email) {
         boolean result = false;
-        for (int i = 0; i < email.length(); i++) {
-            if ( (int) email.charAt(i) == 64) {
-                result = true;
-            }
+        String domain;
+        String[] sepEmail = email.split("@");
+        if (sepEmail.length != 2) {
+            return false;
         }
-        return result;
+        domain = sepEmail[1];
+        String[] sepDomain = domain.split("\\.");
+        return sepDomain.length == 2;
     }
 
     public String getEmail() {
