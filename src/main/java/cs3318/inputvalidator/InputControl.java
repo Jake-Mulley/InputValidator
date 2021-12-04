@@ -15,6 +15,8 @@ public class InputControl {
     @FXML
     private PasswordField passwordTextField;
 
+    Validator validator = new Validator("", "");
+
     /**
      * When submit button is clicked runs validator methods to check input received (email form / password strength)
      * @param event submit button pressed
@@ -23,6 +25,16 @@ public class InputControl {
     protected void onSubmitButtonClick(ActionEvent event) {
         String receivedEmail = emailTextField.getText();
         String receivedPassword = passwordTextField.getText();
+        if (validator.emailFormChecker(receivedEmail)) {
+            if (validator.passwordStrengthChecker(receivedPassword)) {
+                response.setText("Input valid");
+            } else {
+                response.setText("Password not strong enough");
+            }
+        } else {
+            response.setText("Invalid E-mail not well-formed");
+        }
+
 
     }
 }
